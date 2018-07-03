@@ -1,0 +1,11 @@
+
+将mysql数据导入到hdfs
+
+sqoop import --connect jdbc:mysql://192.168.31.35:3306/mobileshop --username root --password admin888  --table ms_brand --columns="brand_id,name,keywords,description" --target-dir '/hb2'
+
+
+
+将hdfs数据导出到mysql
+
+sqoop export --connect jdbc:mysql://192.168.31.35:3306/test --username root --password admin888 --export-dir '/hb2' --table ms_brand_bak -m 1
+
