@@ -1,0 +1,48 @@
+原数据：
+zhangsan@163.com	6000	0	2014-02-20
+lisi@163.com	2000	0	2014-02-20
+lisi@163.com	0	100	2014-02-20
+zhangsan@163.com	3000	0	2014-02-20
+wangwu@126.com	9000	0	2014-02-20
+wangwu@126.com	0	200		2014-02-20
+
+
+步骤1:
+先通过SumStep进行求和
+数据输出：
+lisi@163.com	2000.0	100.0	1900.0
+wangwu@126.com	9000.0	200.0	8800.0
+zhangsan@163.com	9000.0	0.0	9000.0
+
+
+步骤2:
+将步骤1的输出作为输入，进行排序
+
+//比较
+	public int compareTo(InfoBean o) {
+		if(this.income == o.getIncome()){
+			return this.expenses > o.getExpenses() ? 1 : -1;
+		}
+		return this.income > o.getIncome() ? 1 : -1;
+	}
+排序规则
+收入不同：按收入从低到高进行排序
+收入相同：按支出从低到高排序
+
+数据输出：
+lisi@163.com	2000.0	100.0	1900.0
+zhangsan@163.com	9000.0	0.0	9000.0
+wangwu@126.com	9000.0	200.0	8800.0
+
+
+
+对于mapper和reducer，如果key是text类型，自动按字典顺序输出；如果是long类型，按大小进行排序；如果是bean类型，将需要自己定义规则。
+
+
+
+
+
+
+
+
+
